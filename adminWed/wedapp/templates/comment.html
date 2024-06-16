@@ -1,0 +1,35 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block bodycontent %}
+               <div class="container">
+                    <h1 class="h3 mb-1 text-gray-800">Costomer Request</h1>
+                    <div class="row">
+                        <div class="col-lg">
+                                <div class="card-body">
+                                    <table class="table table-striped shadow p-3 mb-5 bg-white rounded">
+                                        <thead>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">MobileNo</th>
+                                            <th scope="col">Comment</th>
+                                            <th scope="col">Solve</th>
+                                        </thead>
+                                        <tbody>
+                            {% for res in view %}
+                                            <tr>
+                                                <td>{{ res.Id }}</td>
+                                                <td>{{ res.Name }}</td>
+                                                <td>{{ res.Email }}</td>
+                                                <td>{{ res.Mobileno }}</td>
+                                                <td>{{ res.Comment }}</td>
+                                                <td> <a href="/delete/{{ res.Id }}"> Solve </a> </td>
+                                            </tr>
+                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}

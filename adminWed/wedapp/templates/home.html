@@ -1,0 +1,289 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>make my life</title>
+
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        
+        <!-- Font-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+        
+        <!-- Google fonts-->
+        <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    
+        <!-- CSS -->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top"><em>make my life</em></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#ViewHall">ViewHall</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/order">Order</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Halldetails</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <h2>
+                    {% if messages %}
+
+                    {% for message in messages %}
+
+                    {{ message }}
+                    {% endfor %}
+                    {% endif %}
+                </h2>
+                <div class="masthead-subheading">Dum Dum Dum!</div>
+                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#start">Explore..</a>
+            </div>
+        </header>
+
+        <!-- Start-->
+        <section class="page-section" id="start">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Welcome</h2>
+                    <h3 class="section-subheading text-muted">change your world by knowing your words...</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-parking fa-stack-1x "></i>
+                        </span>
+                        <h4 class="my-3">Parking Facilities</h4>
+                        <p class="text-muted">Parking facilities can be both indoor and outdoor,public or private.It can be a parking garage,or aparking space that belongs to the property of a person's house.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-hamburger fa-stack-1x"></i>
+                        </span>
+                        <h4 class="my-3">Best Chef's</h4>
+                        <p class="text-muted">Creative chef who can skilfully plan menus,prepare outstanding food,manage budgets,and lead a team of people to deliver quality of service to your customers.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-clipboard-check fa-stack-1x"></i>
+                        </span>
+                        <h4 class="my-3">Decorators & Events</h4>
+                        <p class="text-muted">Rich Decoration for affordable cost.Friendly Approach.Elegant and impressive decoration creator.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- viewhall -->
+        <section class="page-section bg-light" id="ViewHall">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">ViewHall</h2>
+                    <h3 class="section-subheading text-muted">Welcome our wedding arrangment</h3>
+                </div>
+                <div class="row">
+                {% for res in view %}
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" href="/reserve/{{ res.Id }}" style="text-decoration: none;color: black;">
+                                <img class="img-fluid" src="{{ res.Photo.url }}" alt="..." />
+                                <div class="portfolio-caption-heading">{{ res.HallName }}</div></a>
+                                <div class="portfolio-caption-subheading text-muted">{{ res.Address }}-<a  data-bs-toggle="modal" href="#portfolioModal" style="color: blue;">Show Location</a></div>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+                </div>
+            </div>
+        </section>
+
+        <!-- About-->
+        <section class="page-section" id="about">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">About</h2>
+                    <h3 class="section-subheading text-muted">Welcome Our Hall</h3>
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/ab1.jpg' %}" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Our Humble Life</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">உன் வாழ்வில் இணைந்து பயணிக்க இன்று என் வாழ்வில் முக்கியமான நாள்</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/ab2.jpg' %}" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Stay Together</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">அற்முதமான கட்டுரைக்கு அழகான தொடக்கம் கல்யாணம்..!</p></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'assets/img/about/ab3.jpg' %}" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="subheading">Happy</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">இன்று போல் என்றும் அன்பும் காதலும் மலர என் அன்பு வாழ்த்துக்கள்..!</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <h4>
+                                Be Part
+                                <br />
+                                Of Our
+                                <br />
+                                Life!
+                            </h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    <!-- contact -->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">contact</h2>
+                    <h3 class="section-subheading text-muted">Agree to terms and condions</h3>
+                </div>
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="/call">
+                {% csrf_token %}
+                    <div class="row align-items-stretch mb-5">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- Name input-->
+                                <input class="form-control" name="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Email address input-->
+                                <input class="form-control" name="email" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <div class="form-group mb-md-0">
+                                <!-- Phone number input-->
+                                <input class="form-control" name="phno" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!-- Comment -->
+                                <textarea class="form-control" name="comment" type="comment" placeholder="Comment *" rows="8" data-sb-validations="required" ></textarea>
+                                <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
+                            </div>
+                            <div><input type="submit" class="btn btn-primary btn-xl text-uppercase" value="Send"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+{% for res in view %}
+    <div class="portfolio-modal modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-bs-dismiss="modal"><img src="{% static 'assets/img/close-icon.svg' %}" alt="Close modal" /></div>
+                <div class="container">
+                   <iframe src="{{ res.Map }}" style="width: 1000px;height: 400px;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+            
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hall User Login</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="user" name="form" method="POST" action="/alter">
+                {% csrf_token %}
+                        <div class="form-group">
+                            <input type="email" class="form-control form-control-user" name="mail" id="exampleInputEmail" aria-describedby="emailHelp"
+                                placeholder="Enter Email Address...">
+                        </div><br/>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-user" name="pass" 
+                                id="exampleInputPassword" placeholder="Password">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <input type="submit" class="btn btn-primary" value="Login">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--JS-->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>    
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
+</body>
+</html>

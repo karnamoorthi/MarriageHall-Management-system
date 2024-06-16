@@ -1,0 +1,110 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>make my life</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+        
+        <!-- Font -->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+        
+        <!-- Google fonts-->
+        <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+        <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    
+        <!-- CSS -->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <style type="text/css">
+            #mainNav{
+                background-color: black;
+            }
+        </style>
+
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#top"><em>make my life</em></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/order">Order</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout" data-toggle="modal" data-target="#logoutModal">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="page-section" id="order">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">your order</h2>
+                </div>
+                <h2 class="bg-success">
+                    {% if messages %}
+
+                    {% for message in messages %}
+
+                    {{ message }}
+                    {% endfor %}
+                    {% endif %}
+                </h2>
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <th scope="col">No</th>
+                            <th scope="col">Hall</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Mobile no</th>
+                            <th scope="col">Fun</th>
+                            <th scope="col">In Date</th>
+                            <th scope="col">Out Date</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Cancel</th>
+                        </thead>
+                        <tbody>
+                            {% for res in view %}
+                            <tr>
+                                <td>{{ res.Id }}</td>
+                                <td>{{ res.Hall }}</td>
+                                <td>{{ res.Name }}</td>
+                                <td>{{ res.Mobileno }}</td>
+                                <td>{{ res.Fun }}</td>
+                                <td>{{ res.Checkin }}</td>
+                                <td>{{ res.Checkout }}</td>
+                                <td> <a href="/edit/{{ res.Id }}"> Edit </a> </td>
+                                <td> <a href="/delete/{{ res.Id }}"> Cancel </a> </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    
+        <!--JS-->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>    
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    
+</body>
+</html>

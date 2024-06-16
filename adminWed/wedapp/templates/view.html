@@ -1,0 +1,36 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block bodycontent %}
+        <section class="page-section bg-light">
+            <div class="container ">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Make <sup class="text-warning">my</sup> Life</h2>
+                    <h2 class="bg-success">
+                        {% if messages %}
+
+                        {% for message in messages %}
+
+                        {{ message }}
+                        {% endfor %}
+                        {% endif %}
+                    </h2>
+                </div><br/>
+                <div class="row">
+                {% for res in view %}
+                    <div class="col-lg-4 col-sm-6  shadow p-3 mb-5 bg-white rounded">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" href="{{ res.Photo.url }}">
+                                <img class="img-fluid" src="{{ res.Photo.url }}" alt="..." /></a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">{{ res.HallName }}</div>
+                                <div class="portfolio-caption-subheading text-muted">{{ res.Address }}</div>
+                                <div class="portfolio-caption-subheading text-muted">{{ res.Cost }}</div>
+                                <div class="portfolio-caption-subheading text-muted"><a href="/deletehall/{{ res.Id }}"> Delete</a><a href="/ed/{{ res.Id }}"> Edit</a></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </section>
+ {% endblock %}

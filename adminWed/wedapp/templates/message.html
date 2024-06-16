@@ -1,0 +1,8 @@
+
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <div>{{ message }}</div>
+    {% endfor %}
+    </ul>
+  {% endif %}

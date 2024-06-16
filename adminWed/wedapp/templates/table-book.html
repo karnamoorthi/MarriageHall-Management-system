@@ -1,0 +1,39 @@
+{% extends "dashboard.html" %}
+{% load static %}
+{% block bodycontent %}
+                <div class="container">
+                    <h1 class="h3 mb-1 text-gray-800">Costomer Hallbooking Tables</h1>
+                    <div class="row">
+                        <div class="col-lg">
+                                <div class="card-body">
+                                    <table class="table table-striped shadow p-3 mb-5 bg-white rounded">
+                                        <thead>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Hall</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">MobileNo</th>
+                                            <th scope="col">Fun</th>
+                                            <th scope="col">InDate</th>
+                                            <th scope="col">OutDate</th>
+                                            <th scope="col">Cancel</th>
+                                        </thead>
+                                        <tbody>
+                            {% for res in view %}
+                                            <tr>
+                                                <td>{{ res.Id }}</td>
+                                                <td>{{ res.Hall }}</td>
+                                                <td>{{ res.Name }}</td>
+                                                <td>{{ res.Mobileno }}</td>
+                                                <td>{{ res.Fun }}</td>
+                                                <td>{{ res.Checkin }}</td>
+                                                <td>{{ res.Checkout }}</td>
+                                                <td> <a href="/delete/{{ res.Id }}"> Cancel </a> </td>
+                                            </tr>
+                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
